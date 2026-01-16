@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rose</title>
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+    font-family: Pacifico, cursive;
+    color: rgb(36, 36, 15);
+    background: url("background.jpg") no-repeat center fixed;
+    background-size: cover;
+    margin: 0;
+    text-align: center;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    min-height: 100vh;
+    padding: 50px 20px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== BUTTON ===== */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+/* ===== INTRO IMAGE ===== */
+.main-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+/* ===== GALLERY (CHANGED PART) ===== */
+.gallery {
+    max-width: 900px;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+/* normal photo */
+.photo img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+/* different heights (like your drawing) */
+.photo.tall img {
+    height: 380px;
+}
+
+.photo.short img {
+    height: 240px;
+}
+
+/* ===== VIDEO SCROLL ===== */
+.video-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+.video-scroll video {
+    width: 500px;
+    border-radius: 10px;
+}
+
+/* ===== MESSAGE ===== */
+.hidden {
+    display: none;
+}
+
+.letter {
+    max-width: 600px;
+    margin: 30px auto;
+    background: rgba(255,255,255,0.9);
+    color: black;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox img {
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .main-photo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .video-scroll {
+        justify-content: flex-start;
+    }
+    .ps{
+        color:black;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<section>
+    <h1>HAPPY BIRTHDAY ROSE!</h1>
+    <img src="Nailoong.jpg" class="main-photo">
+    <button onclick="goToPictures()">Next</button>
+</section>
+
+
+
+<!-- PICTURES -->
+<section id="pictures">
+    <h2>Pictures</h2>
+
+    <div class="gallery">
+        <div class="photo tall">
+            <img src="pic1.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo short">
+            <img src="pic2.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo short">
+            <img src="pic3.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo tall">
+            <img src="pic4.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo tall">
+            <img src="pic5.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo short">
+            <img src="pic6.jpg" onclick="openLightbox(this)">
+        </div>
+
+        
+        <div class="photo long">
+            <img src="pic7.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo short">
+            <img src="pic8.jpg" onclick="openLightbox(this)">
+        </div>
+
+        
+        <div class="photo tall">
+            <img src="pic9.jpg" onclick="openLightbox(this)">
+        </div>
+
+        <div class="photo tall">
+            <img src="pic10.jpg" onclick="openLightbox(this)">
+        </div>
+    </div>
+</section>
+
+<!-- VIDEOS -->
+<section>
+    <h2>Videos</h2>
+    <source src="Nailoong2.gif" class="main-photo">
+    
+
+    <div class="video-scroll">
+        <video controls>
+            <source src="rose vid.mp4" type="video/mp4">
+        </video>
+
+        <video controls>
+            <source src="singer rose.mp4" type="video/mp4">
+        </video>
+        <video controls>
+            <source src="IMG_6140.MOV"type="video/mp4">
+        </video>
+    </div>
+</section>
+
+<!-- MESSAGE -->
+<section>
+    <h2>Message</h2>
+
+    <p id="ps">
+        P.S. Alam ko ata di ka fan ng mga ganito, boring kasi kung “happy birthday” lang hahaha.<br>
+        P.S. First ko gumawa ng HTML, boring sa bahay, wag mo sana i-judge.<br>
+        P.S. Secret mo 'to ah
+    </p>
+
+    <button onclick="openMessage()">Click to open</button>
+
+    <div id="message" class="hidden letter">
+        <p>Happy birthday, Rose!</p>
+        <p>
+            I hope you never lose that fun and happy side of you.
+            You make people feel lighter just by being yourself,and that’s something not everyone has.<br> 
+            I hope life treats you well, and whatever you go through, I know you’ll handle it in your own way. 
+
+
+
+        </p>
+        <p>
+            Thank you for being a good friend.
+            I wish you all the best in life.
+            Mag-ingat ka palagi and take care always. 🫶
+        </p>
+
+        <section>
+    
+        <div class="video-scroll">
+            <video controls>
+                <source src="b.mp4" type="video/mp4">
+            </video>
+
+    </section>
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+</div>
+
+<script>
+function goToPictures() {
+    document.getElementById("pictures").scrollIntoView({ behavior: "smooth" });
+}
+
+function openMessage() {
+    document.getElementById("message").classList.remove("hidden");
+}
+
+function openLightbox(img) {
+    document.getElementById("lightbox-img").src = img.src;
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+</script>
+
+<footer>
+    <p> HAHAHHAH yun lang, bye</p>
+    <p> credits for chatgpt sa java script</p>
+    
+</footer>
+
+</body>
+</html>
